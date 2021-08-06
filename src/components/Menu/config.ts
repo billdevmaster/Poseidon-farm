@@ -9,7 +9,16 @@ const config: MenuEntry[] = [
   {
     label: 'Trade',
     icon: 'TradeIcon',
-    href: '/quickswap',
+    items: [
+      {
+        label: 'Exchange',
+        href: 'https://quickswap.exchange/#/swap?outputCurrency=0xf6FE434396cc2D34B1Aa2eFfa5E1B939ea9bb0A9',
+      },
+      {
+        label: 'Liquidity',
+        href: 'https://quickswap.exchange/#/add/0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174/0xf6FE434396cc2D34B1Aa2eFfa5E1B939ea9bb0A9',
+      },
+    ],
   },
   {
     label: 'Farms',
@@ -22,40 +31,36 @@ const config: MenuEntry[] = [
     href: '/comingsoon',
   },
   {
-    label: 'lottery',
-    icon: 'PoolIcon',
+    label: 'Lottery',
+    icon: 'TicketIcon',
     href: '/comingsoon',
   },
   // {
-  //   label: 'Pools',
-  //   icon: 'PoolIcon',
-  //   href: '/pools',
-  // },
-  // {
-  //   label: 'Lottery',
-  //   icon: 'TicketIcon',
-  //   href: '/lottery',
+  //   label: 'Telegram',
+  //   icon: 'NftIcon',
+  //   href: '/https://t.me/PoseidonFinance',
   // },
   // {
   //   label: 'NFT',
   //   icon: 'NftIcon',
   //   href: '/nft',
   // },
+
   {
     label: 'Info',
     icon: 'InfoIcon',
     items: [
       {
         label: 'Poocoin',
-        href: '/',
+        href: '/comingsoon',
       },
       {
         label: 'Quickchart',
-        href: '/',
+        href: '/comingsoon',
       },
       {
         label: 'Coingecko',
-        href: '/',
+        href: '/comingsoon',
       },
     ],
   },
@@ -65,33 +70,24 @@ const config: MenuEntry[] = [
     items: [
       {
         label: 'Github',
-        href: '/',
+        href: '/comingsoon',
       },
       {
         label: 'Docs',
-        href: '/',
+        href: '/comingsoon',
       },
       {
         label: 'Blog',
-        href: '/',
+        href: '/comingsoon',
       },
     ],
   },
   {
     label: 'Partnerships',
     icon: 'GooseIcon',
-    href: '/',
+    href: '/comingsoon',
   },
-  // {
-  //   label: 'Audit by Hacken',
-  //   icon: 'AuditIcon',
-  //   href: 'https://www.goosedefi.com/files/hackenAudit.pdf',
-  // },
-  // {
-  //   label: 'Audit by CertiK',
-  //   icon: 'AuditIcon',
-  //   href: 'https://certik.org/projects/goose-finance',
-  // },
+  
 ]
 
 export default config

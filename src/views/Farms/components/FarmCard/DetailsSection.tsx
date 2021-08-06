@@ -48,16 +48,20 @@ const DetailsSection: React.FC<ExpandableSectionProps> = ({
   const TranslateString = useI18n()
   const liquidityUrlPathParts = getLiquidityUrlPathParts({ quoteTokenAdresses, quoteTokenSymbol, tokenAddresses })
 
+  let LPlink = '';
+  if (isTokenOnly) {
+    LPlink = `https://exchange.goosedefi.com/#/swap/${tokenAddresses[process.env.REACT_APP_CHAIN_ID]}`;
+  } else if (quoteTokenSymbol === 'UST' || quoteTokenSymbol === 'WLUNA') {
+    LPlink = `https://exchange.dfyn.network/#/add/${liquidityUrlPathParts}`;
+  } else {
+    LPlink = `https://quickswap.exchange/#/add/${liquidityUrlPathParts}`;
+  }
+
   return (
     <Wrapper>
       <Flex justifyContent="space-between">
         <Text>{TranslateString(316, 'Stake')}:</Text>
-        <StyledLinkExternal href={
-          isTokenOnly ?
-            `https://exchange.goosedefi.com/#/swap/${tokenAddresses[process.env.REACT_APP_CHAIN_ID]}`
-            :
-          `https://exchange.goosedefi.com/#/add/${liquidityUrlPathParts}`
-        }>
+        <StyledLinkExternal href={LPlink}>
           {lpLabel}
         </StyledLinkExternal>
       </Flex>
@@ -69,7 +73,7 @@ const DetailsSection: React.FC<ExpandableSectionProps> = ({
       )}
       <Flex justifyContent="flex-start">
         <Link external href={bscScanAddress} bold={false} className="color-blue">
-          {TranslateString(356, 'View on BscScan')}
+          {TranslateString(356, 'View on Polygonscan')}
         </Link>
       </Flex>
     </Wrapper>

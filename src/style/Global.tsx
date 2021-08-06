@@ -22,6 +22,8 @@ const GlobalStyle = createGlobalStyle`
   nav div:last-child button[type=button] {
     background-color: #0583fb !important;
   }
+
+  
 `
 
 export default GlobalStyle

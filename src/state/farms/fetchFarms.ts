@@ -73,10 +73,10 @@ const fetchFarms = async () => {
         const lpTokenRatio = new BigNumber(lpTokenBalanceMC).div(new BigNumber(lpTotalSupply))
         // Total value in staking in quote token value
         lpTotalInQuoteToken = new BigNumber(quoteTokenBlanceLP)
-          .div(new BigNumber(10).pow(18))
-          .times(new BigNumber(2))
-          .times(lpTokenRatio)
-
+        .div(new BigNumber(10).pow(18))
+        .times(new BigNumber(2))
+        .times(lpTokenRatio)
+        
           // Amount of token in the LP that are considered staking (i.e amount of token * lp ratio)
         tokenAmount = new BigNumber(tokenBalanceLP).div(new BigNumber(10).pow(tokenDecimals)).times(lpTokenRatio)
         const quoteTokenAmount = new BigNumber(quoteTokenBlanceLP)
@@ -86,10 +86,9 @@ const fetchFarms = async () => {
         if(tokenAmount.comparedTo(0) > 0){
           tokenPriceVsQuote = quoteTokenAmount.div(tokenAmount);
         }else{
-          tokenPriceVsQuote = new BigNumber(quoteTokenBlanceLP).div(new BigNumber(tokenBalanceLP));
+          tokenPriceVsQuote = (new BigNumber(quoteTokenBlanceLP).div(new BigNumber(10).pow(quoteTokenDecimals))).div(new BigNumber(tokenBalanceLP).div(new BigNumber(10).pow(tokenDecimals)));
         }
       }
-      
       const [info, totalAllocPoint, eggPerBlock] = await multicall(masterchefABI, [
         {
           address: getMasterChefAddress(),
@@ -105,10 +104,11 @@ const fetchFarms = async () => {
           name: '$SEAPerBlock',
         },
       ])
-
+      console.log(farmConfig.quoteTokenSymbol)
+      
       const allocPoint = new BigNumber(info.allocPoint._hex)
       const poolWeight = allocPoint.div(new BigNumber(totalAllocPoint))
-
+      
       return {
         ...farmConfig,
         tokenAmount: tokenAmount.toJSON(),

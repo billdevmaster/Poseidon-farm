@@ -27,6 +27,14 @@ export enum QuoteToken {
   'BUSD' = 'BUSD',
   'TWT' = 'TWT',
   'UST' = 'UST',
+  '$SEA' = '$SEA',
+  'STONK' = 'STONK',
+  'WBTC' = 'WBTC',
+  'WMATIC' = 'WMATIC',
+  'QUICK' = 'QUICK',
+  'WETH' = 'WETH',
+  'WLUNA' = 'WLUNA',
+  'DAI' = 'DAI',
 }
 
 export enum PoolCategory {
@@ -38,6 +46,7 @@ export enum PoolCategory {
 export interface Address {
   97?: string
   56: string
+  137: string
 }
 
 export interface FarmConfig {

@@ -51,6 +51,7 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
   // /!\ This function will be removed soon
   // This function compute the APY for each farm and will be replaced when we have a reliable API
   // to retrieve assets prices against USD
+  // console.log(cakePrice.toNumber())
   const farmsList = useCallback(
     (farmsToDisplay, removed: boolean) => {
       // const cakePriceVsBNB = new BigNumber(farmsLP.find((farm) => farm.pid === CAKE_POOL_PID)?.tokenPriceVsQuote || 0)
@@ -60,8 +61,8 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
         // }
         const cakeRewardPerBlock = new BigNumber(farm.eggPerBlock || 1).times(new BigNumber(farm.poolWeight)) .div(new BigNumber(10).pow(18))
         const cakeRewardPerYear = cakeRewardPerBlock.times(BLOCKS_PER_YEAR)
-
         let apy = cakePrice.times(cakeRewardPerYear);
+
         let totalValue = new BigNumber(farm.lpTotalInQuoteToken || 0);
         if (farm.quoteTokenSymbol === QuoteToken.BNB) {
           totalValue = totalValue.times(bnbPrice);
@@ -105,7 +106,7 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
         <FarmTabButtons stakedOnly={stakedOnly} setStakedOnly={setStakedOnly}/>
         <div>
           <Divider />
-          <FlexLayout>
+          <FlexLayout className="farm-list">
             <Route exact path={`${path}`}>
               {stakedOnly ? farmsList(stakedOnlyFarms, false) : farmsList(activeFarms, false)}
             </Route>
